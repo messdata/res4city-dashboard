@@ -120,7 +120,7 @@ def update_dashboard(n_clicks, n_intervals):
     )
 
     return stats, table
-<<<<<<< HEAD
+
     # if __name__ == "__main__":
 #     app.run(debug=True, port=8050)
 
@@ -128,7 +128,7 @@ def update_dashboard(n_clicks, n_intervals):
 application = app.server  # For Render/Gunicorn  # For WSGI
 
 
-=======
+
 server = app.server  # For WSGI
 
 
