@@ -86,6 +86,14 @@ def notify_users(excel_file):
     results_df = pd.DataFrame(results)
     results_df.to_excel(output_excel, index=False)
 
+# --- Auto Push to GitHub after updating logs ---
+def auto_push_logs():
+    print("\n📤 Syncing logs to GitHub...")
+    os.system("git add ./Sent_log.xlsx ./click_log.txt")
+    os.system("git commit -m 'Auto log sync from Push Script_2.py'")
+    os.system("git push origin main")
+    print(" Logs synced to GitHub successfully.")
+
 if __name__ == "__main__":
     ctr_thread = threading.Thread(target=start_ctr_app)
     ctr_thread.start()
@@ -93,5 +101,12 @@ if __name__ == "__main__":
     excel_file = "Model_Output.xlsx"
     notify_users(excel_file)
 
+
     # ctr_thread.join()
   
+
+    auto_push_logs()
+  # ctr_thread.join()
+
+ 
+

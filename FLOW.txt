@@ -1,0 +1,40 @@
+START
+  |
+  V
+📂 Read 'Output.xlsx'
+  |
+  V
+📊 Filter: Hours_to_Complete < 90
+  |
+  V
+🔍 For each user in filtered list:
+  |
+  ├── 🧑 Get: user_id, email, course_code, hours_to_complete
+  |
+  ├── 🔗 Create redirect tracking URL:
+  |       http://127.0.0.1:5050/redirect?user_id={email}&dest=https://www.res4city.eu/
+  |
+  ├── 📨 Generate Email:
+  |     ├── get_html_template(...) → HTML version
+  |     └── get_plain_text_template(...) → plain text
+  |
+  ├── 📎 Attach logo (if provided)
+  |
+  ├── 📤 Send email via SMTP (Gmail App Password)
+  |
+  └── 📝 Log success/failure to results list
+  |
+  V
+📄 Save results to 'Sent_log.xlsx'
+  |
+  V
+🏃 Launch CTR click tracking server (Flask app on port 5050)
+  |
+  V
+🔄 CTR logs all clicks to 'click_log.txt' with timestamps
+  |
+  V
+⏏ Optionally export click stats to Excel
+  |
+  V
+✅ END
